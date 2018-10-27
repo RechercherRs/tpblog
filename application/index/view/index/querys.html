@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="__ADMIN__/vendor/layui/css/layui.css">
+    <link rel="stylesheet" href="__ADMIN__/custom/css/style.css">
+</head>
+<body class="layui-layout-body" style="padding:10px 10px;margin-bottom:50px;">
+<div class="layui-container">
+ 
+    {foreach  name='querys' item='vo'}
+    <tr><td><span>昵称</span>{$vo.nickname}</td></tr> </br> 
+    <tr><td><span>评论时间</span>{$vo.createdat}</td></tr></br>
+    <tr><td><span>评论IP</span>{$vo.createdip}</td></tr></br>
+    <tr><td><span>文章ID</span>{$vo.articleid}</td></tr></br>
+    <tr><td><span>评论内容</span>{$vo.content}</td></tr></br>
+        {foreach name="$artic" item='v'}
+        <tr><td><span>文章标题</span>{$v.title}</td></tr></br>
+        <tr><td><span>文章介绍</span>{$v.description}</td></tr></br>
+        <tr><td><span>文章正文</span>{$v.content}</td></tr></br>
+            {foreach name='cate' item='vi'}
+                <tr><td><span>分类名称</span>{$vi.name}</td></tr></br>
+            {/foreach}
+        {/foreach}
+</br>
+    {/foreach}
+</div>
+
+<script src="__ADMIN__/vendor/js/jquery.js"></script>
+<script src="__ADMIN__/vendor/layui/layui.js"></script>
+<script src="__ADMIN__/custom/js/admin.js"></script>
+
+<script>
+    //Demo
+    layui.use(['form','element'], function(){
+        var form = layui.form;
+        var element = layui.element;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+        });
+    });
+    $(function () {
+        $(window.parent.document).find('#righttitle').text($('title').text());
+    });
+</script>
+</body>
+</html>
